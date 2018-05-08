@@ -1,6 +1,8 @@
 import spacy
 import re
 import numpy as np
+import random
+import os
 
 from spacy.tokenizer import Tokenizer
 
@@ -239,3 +241,40 @@ def get_data_from_sentences(sentences):
         all_data.append((words, word_data, tag_data, class_data))
     A /= total_tokens
     return all_data, A
+
+def preproc_data(filename):
+    prefix, _ = os.path.split(filename)
+    file = open(filename)
+    sentences = []
+    items = []
+    #old_entity = ''
+    for line in file.readlines():
+        if line[0] == '#':
+            continue
+        elements = line.split()
+        if len(elements) < 5:
+            if items != []:
+                sentences.append(items)
+            items = []
+            continue
+        items.append(line.strip())
+
+    random.Random(6).shuffle(sentences)
+    num_sentences = len(sentences)
+    train_len = 0.6*num_sentences
+
+    f_labeled = open(os.path.join(prefix, 'labeled.conll'),'w')
+    f_unlabeled = open(os.path.join(prefix, 'unlabeled.conll'), 'w')
+    f_shuffled = open(os.path.join(prefix, 'train_shuffled.conll'), 'w')
+
+    for i in range(int(train_len)):
+        print('\n'.join(sentences[i]) + '\n\n\n', file=f_labeled)
+        print('\n'.join(sentences[i]) + '\n\n\n', file=f_shuffled)
+
+    for i in range(int(train_len), num_sentences):
+        print('\n'.join(sentences[i]) + '\n\n\n', file=f_unlabeled)
+        print('\n'.join(sentences[i]) + '\n\n\n', file=f_shuffled)
+
+    f_labeled.close()
+    f_unlabeled.close()
+    f_shuffled.close()
