@@ -1,0 +1,19 @@
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 0 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 1 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 4 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 7 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 9 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 12 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 14 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_random 19 >> results/unlabeled_50_random/gcn-ner-unlabeled-50-uncertain.txt
+
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 0 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 1 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 4 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 7 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 9 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 12 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 14 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py unlabeled_50_uncertain_2 19 >> results/unlabeled_50_uncertain_2/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py 25 >> results/unlabeled_50_uncertain/gcn-ner-unlabeled-50-uncertain.txt
+# CUDA_VISIBLE_DEVICES=5 python test_dataset.py 29 >> results/unlabeled_50_uncertain/gcn-ner-unlabeled-50-uncertain.txt
