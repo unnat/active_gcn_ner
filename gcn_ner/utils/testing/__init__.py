@@ -3,7 +3,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-def get_gcn_results(gcn_model, data, trans_prob):
+def get_gcn_results(gcn_model, data, trans_prob, out_file = None):
     import numpy as np
     import copy
 
@@ -20,23 +20,31 @@ def get_gcn_results(gcn_model, data, trans_prob):
     false_negative = 0
     total_positive = 0
     total_negative = 0
-
+    f = None
+    if out_file:
+        f = open(out_file, 'w')
 
     total_sentences = 0
     broken_sentences = 0
-    for words, sentence, tag, classification in data:
+    for idx, words, sentence, tag, classification in enumerate(data):
         old_rhs = ''
         old_lhs = ''
         full_sentence = create_full_sentence(words)
         word_embeddings = sentence
         total_sentences += 1
+        n = len(full_sentence.split())
         try:
             A_fw, A_bw, tags, X = create_graph_from_sentence_and_word_vectors(full_sentence, word_embeddings)
-            prediction = gcn_model.predict_with_viterbi(A_fw, A_bw, X, tags, trans_prob)
+            prediction, conf = gcn_model.predict_and_score_viterbi(A_fw, A_bw, X, tags, trans_prob)
+            conf = conf ** (1./n)
+            if f:
+                print(idx, conf, n, file=f)
         except Exception as e:
 #            _logger.warning('Cannot process the following sentence: ' + full_sentence)
 #            print([TAGS[np.argmax(t)] for t in tags])
 #            print(words)
+#            if f:
+#                print(idx, 1.0, n, file=f)
             broken_sentences += 1
             continue
 

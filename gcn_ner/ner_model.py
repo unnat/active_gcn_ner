@@ -241,6 +241,18 @@ class GCNNerModel(object):
             prediction.append(vector)
         return prediction
 
+    def predict_and_score_viterbi(self, A_fw, A_bw, X, tag_logits, trans_params):
+        outputs = np.array(self.__predict([A_fw], [A_bw], [X], [tag_logits], trans_params))
+        outputs = np.transpose(outputs, [1, 0, 2])
+        outputs = outputs[0]
+        viterbi_sequence, prob_score = tf.contrib.crf.viterbi_decode(outputs, trans_params)
+        prediction = []
+        for item in viterbi_sequence:
+            vector = [0.] * self._output_size
+            vector[item] = 1.
+            prediction.append(vector)
+        return prediction, prob_score
+
     # Loading and saving functions
 
     def save(self, filename):

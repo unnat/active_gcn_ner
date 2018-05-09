@@ -12,6 +12,14 @@ def get_entities_from_tuple(words, embeddings, ner, trans_prob):
     entities = [utils.aux.get_entity_name(p) for p in predictions]
     return entities
 
+def get_entities_and_confidence(words, embeddings, net, trans_prob):
+    import gcn_ner.utils as utils
+
+    sentence = utils.aux.create_full_sentence(words)
+    A_fw, A_bw, tags, X = utils.aux.create_graph_from_sentence_and_word_vectors(sentence, embeddings)
+    predictions, score = ner.predict_and_score_viterbi(A_fw, A_bw, X, tags, trans_prob)
+    entities = [utils.aux.get_entity_name(p) for p in predictions]
+    return entities, score
 
 def erase_non_entities(all_words, all_entities, all_idx):
     return [(w, e, i) for w, e, i in zip(all_words, all_entities, all_idx) if e and w != ' ']
