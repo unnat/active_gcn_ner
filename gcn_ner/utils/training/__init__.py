@@ -20,7 +20,8 @@ def bin_data_into_buckets(data, batch_size):
     return buckets
 
 
-def train_and_save(dataset, saving_dir, epochs=20, bucket_size=10):
+def train_and_save(dataset, saving_dir, epochs=20, bucket_size=10, al_args=None, load_ckpt=None):
+    # al_args: fra
     import random
     import sys
     import pickle
@@ -32,11 +33,23 @@ def train_and_save(dataset, saving_dir, epochs=20, bucket_size=10):
 
 
     sentences = aux.get_all_sentences(dataset)
+    if (type(al_args) == float) and al_args <=1:
+        print("Random AL fraction: {}".format(al_args))    
+        al_list = np.random.randint(0,len(sentences),int(al_args*len(sentences)))
+        sentences = [sentences[i] for i in al_list]
+
+    elif type(al_args) == list:
+        print("AL List provided len: {}".format(len(al_args)))    
+        sentences = [sentences[i] for i in al_args]
+
     print('Computing the transition matrix')
     data, trans_prob = aux.get_data_from_sentences(sentences)
     buckets = bin_data_into_buckets(data, bucket_size)
 
-    gcn_model = GCNNerModel(dropout=0.7)
+    if load_ckpt:
+        gcn_model = GCNNerModel.load(load_ckpt)
+    else:
+        gcn_model = GCNNerModel(dropout=0.7)
 
     for i in range(epochs):
         random_buckets = sorted(buckets, key=lambda x: random.random())

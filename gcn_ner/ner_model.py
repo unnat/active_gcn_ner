@@ -10,7 +10,7 @@ NAMESPACE = 'gcn'
 def GCN_layer_fw(embedding_size, hidden_layer1_size, hidden, Atilde_fw):
     W0_fw = tf.Variable(tf.random_uniform([embedding_size, hidden_layer1_size], 0, 0.1), name='W0_fw')
     b0_fw = tf.Variable(tf.random_uniform([hidden_layer1_size], -0.1, 0.1), name='b0_fw')
-    left_X1_projection_fw = lambda x: tf.matmul(x, W0_fw) + b0_fw
+    left_X1_projection_fw = lambda x: tf.nn.relu(tf.matmul(x, W0_fw) + b0_fw)
     left_X1_fw = tf.map_fn(left_X1_projection_fw, hidden)
     left_X1_fw = tf.transpose(left_X1_fw, perm=[1, 0, 2], name='left_X1_fw')
     X1_fw = tf.nn.relu(tf.matmul(Atilde_fw, left_X1_fw))
@@ -21,7 +21,7 @@ def GCN_layer_fw(embedding_size, hidden_layer1_size, hidden, Atilde_fw):
 def GCN_layer_bw(embedding_size, hidden_layer1_size, hidden, Atilde_bw):
     W0_bw = tf.Variable(tf.random_uniform([embedding_size, hidden_layer1_size], 0, 0.1), name='W0_bw')
     b0_bw = tf.Variable(tf.random_uniform([hidden_layer1_size], -0.1, 0.1), name='b0_bw')
-    left_X1_projection_bw = lambda x: tf.matmul(x, W0_bw) + b0_bw
+    left_X1_projection_bw = lambda x: tf.nn.relu(tf.matmul(x, W0_bw) + b0_bw)
     left_X1_bw = tf.map_fn(left_X1_projection_bw, hidden)
     left_X1_bw = tf.transpose(left_X1_bw, perm=[1, 0, 2], name='left_X1_bw')
     X1_bw = tf.nn.relu(tf.matmul(Atilde_bw, left_X1_bw))

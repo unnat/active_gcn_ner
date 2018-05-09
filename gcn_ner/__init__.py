@@ -63,13 +63,14 @@ class GCNNer:
 
         sentences = utils.aux.get_all_sentences(dataset)
         data, _ = utils.aux.get_data_from_sentences(sentences)
+        # precision, recall, f1 = utils.testing.get_gcn_results(self._ner, data, self._trans_prob, "unlabeled_50_scores.txt")
         precision, recall, f1 = utils.testing.get_gcn_results(self._ner, data, self._trans_prob)
         print('precision:', precision)
         print('recall:', recall)
         print('F1:', f1)
 
     @staticmethod
-    def train_and_save(dataset, saving_dir, epochs=20, bucket_size=10):
+    def train_and_save(dataset, saving_dir, epochs=20, bucket_size=10, al_args=None, load_ckpt=None):
         '''
 
         :param dataset: A file in the CONLL format to use as a training.
@@ -79,4 +80,4 @@ class GCNNer:
         :return: An instance of this class (GCNNer
         '''
         print('Training the system according to the dataset ', dataset)
-        return utils.training.train_and_save(dataset, saving_dir, epochs, bucket_size)
+        return utils.training.train_and_save(dataset, saving_dir, epochs, bucket_size, al_args, load_ckpt)

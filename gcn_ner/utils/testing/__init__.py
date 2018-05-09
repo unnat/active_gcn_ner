@@ -26,7 +26,7 @@ def get_gcn_results(gcn_model, data, trans_prob, out_file = None):
 
     total_sentences = 0
     broken_sentences = 0
-    for idx, words, sentence, tag, classification in enumerate(data):
+    for idx, (words, sentence, tag, classification) in enumerate(data):
         old_rhs = ''
         old_lhs = ''
         full_sentence = create_full_sentence(words)
