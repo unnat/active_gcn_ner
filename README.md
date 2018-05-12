@@ -1,14 +1,13 @@
-NER that uses Graph Conv Nets
+Active Learning for GCN based Named Entity Recognition
 =============================
 
-This is an implementation of a named entity recognizer that uses Graph
-Convolutional Networks. The reference article is [Graph Convolutional
+This is our modified implementation of Named Entity Recognizer that can
+actively learn on limited initial annotated data. The original Graph
+Convolutional Network model for named entity recognition can be found
+in [this repository](https://github.com/ContextScout/gcn_ner) and the 
+reference article for the base model is [Graph Convolutional
 Networks for Named Entity
 Recognition](https://arxiv.org/abs/1709.10053).
-
-This code uses GCNs and POS tagging to boost the entity recognition of a bidirectional LSTM. 
-It scores ~81% on the Ontonotes 5 test dataset, which can be retrieved from 
-[the LDC website](https://catalog.ldc.upenn.edu/ldc2013t19).  
 
 The system currently uses the word vectors that come with spacy's "en_core_web_md" model.
 
@@ -37,8 +36,8 @@ pip install -r requirements_gpu.txt
 
 Data
 --------
-As the datasets are not public, we've added them to the following shared folder for course staff to access.
-The datasets can be found here: https://uofi.box.com/s/9tm1iwp2siw36wnjfxn4qnhf6d5ygwss
+As the datasets are copyrighted, we've added them to the following shared folder for course staff to access.
+https://uofi.box.com/s/9tm1iwp2siw36wnjfxn4qnhf6d5ygwss
 
 Test NER on a text
 --------
@@ -68,7 +67,7 @@ python test_dataset.py
 CONLL format
 ------------
 
-The training/testing conll files must be in the conll format, as in the following example. 
+The training/testing conll files are in the conll format, as in the following example. 
 Only the fourth, fifth, and eleventh columns are used.
 
 ```code
