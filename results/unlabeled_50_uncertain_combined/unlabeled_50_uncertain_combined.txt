@@ -1,0 +1,48 @@
+./data/unlabeled_50_uncertain_combined/ner-gcn-0.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8422448077772868
+recall: 0.6564867967853042
+F1: 0.7378540551003291
+./data/unlabeled_50_uncertain_combined/ner-gcn-1.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8018154311649016
+recall: 0.715330109099089
+F1: 0.7561077096831719
+./data/unlabeled_50_uncertain_combined/ner-gcn-4.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.7975844330127488
+recall: 0.7640064274236743
+F1: 0.7804344257810362
+./data/unlabeled_50_uncertain_combined/ner-gcn-7.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8235098604032794
+recall: 0.7866440893216213
+F1: 0.8046549391069012
+./data/unlabeled_50_uncertain_combined/ner-gcn-9.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8604678362573099
+recall: 0.7794257866299397
+F1: 0.8179442992940131
+./data/unlabeled_50_uncertain_combined/ner-gcn-12.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8407347379794705
+recall: 0.8073251711973438
+F1: 0.8236913142433705
+./data/unlabeled_50_uncertain_combined/ner-gcn-14.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8574146614437604
+recall: 0.7992696922274387
+F1: 0.8273218142548595
+./data/unlabeled_50_uncertain_combined/ner-gcn-19.tf
+Total sentences 9603
+Broken sentences 276
+precision: 0.8519525726095942
+recall: 0.8115221220598902
+F1: 0.8312460199533007
