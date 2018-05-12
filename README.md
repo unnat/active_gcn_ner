@@ -35,6 +35,11 @@ if you want to install Tensorflow with GPU capabilities please use
 pip install -r requirements_gpu.txt
 ```
 
+Data
+--------
+As the datasets are not public, we've added them to the following shared folder for course staff to access.
+The datasets can be found here: https://uofi.box.com/s/9tm1iwp2siw36wnjfxn4qnhf6d5ygwss
+
 Test NER on a text
 --------
 Execute the file
