@@ -1,4 +1,4 @@
-Active Learning for GCN based Named Entity Recognition
+CS410 project: Active Learning for GCN based Named Entity Recognition
 =============================
 
 This is our modified implementation of Named Entity Recognizer that can
@@ -8,6 +8,10 @@ in [this repository](https://github.com/ContextScout/gcn_ner) and the
 reference article for the base model is [Graph Convolutional
 Networks for Named Entity
 Recognition](https://arxiv.org/abs/1709.10053).
+
+In this work, we investigated a yet unexplored aspect of actively learning for text information systems. We chose the task of parsing dependencies for Named Entity Recognition (NER). We evaluate the impact of Graph Convolutional Networks (GCNs) for active learning based NER. We find the GCNs are indeed effective in indicating which unlabeled examples should we uncover labels for. Uncertainty sampling proves more effective than random sampling in improving performance over the unseen test set. 
+
+Due to computational and time resources, we limited the scope of this project. Going forward, we would want to use other text information tasks (beyond NER) as the test bed of for our approach. Also we would be excited to explore more sophisticated active learning methodologies.
 
 The system currently uses the word vectors that come with spacy's "en_core_web_md" model.
 
