@@ -40,8 +40,8 @@ pip install -r requirements_gpu.txt
 
 Data
 --------
-As the datasets are copyrighted, we've added them to the following shared folder for course staff to access.
-https://uofi.box.com/s/9tm1iwp2siw36wnjfxn4qnhf6d5ygwss
+As the datasets are copyrighted, we can provide the access to course staff on request.
+
 
 Test NER on a text
 --------
